@@ -30,17 +30,17 @@ const getForecast = async () => {
 
 const initCLI = async () => {
     const args = getArgs(process.argv);
-    //Error in args input
 
     if (args.h) {
-        printHelp();
-    } else if (args.s) {
-        saveSetting('city', args.s);
-    } else if (args.t) {
-        saveSetting('token', args.t);
-    } else {
-        getForecast();
+        return printHelp();
     }
+    if (args.s) {
+        return saveSetting('city', args.s);
+    }
+    if (args.t) {
+        return saveSetting('token', args.t);
+    }
+    return getForecast();
 }
 
 initCLI();
